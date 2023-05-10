@@ -11,3 +11,45 @@
 // R0 = R1 * R2
 
 // Initialize R0 to 0
+
+@R3
+M=0
+@R1
+D=M
+@END
+D;JEQ
+@R2
+D=M
+@END
+D;JEQ
+@NEG
+D;JLT
+
+(LOOP)
+@R1
+D=M
+@R3
+M=M+D
+@R2
+M=M-1
+D=M
+@LOOP
+D;JGT
+@END
+0;JMP
+
+(NEG)
+@R1
+D=M
+@R3
+M=M-D
+@R2
+M=M+1
+D=M
+@NEG
+D;JLT
+(END)
+@R3
+D=M
+@R0
+M=D
